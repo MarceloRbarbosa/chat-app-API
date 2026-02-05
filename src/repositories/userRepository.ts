@@ -1,12 +1,19 @@
 import  prisma  from "../config/database";
 
-async function createUser(username: string, passwordHash: string) {
+type CreateUserData = {
+    username: string,
+    password: string,
+}
+
+async function createUser(data: CreateUserData) {
     const newUser = prisma.user.create({
-        data:{
-            username,
-            password: passwordHash,
-        }
-    })
+        data,
+        select: {
+            id: true,
+            username: true,
+            password:true,
+        },
+    });
     return newUser;
 }
 

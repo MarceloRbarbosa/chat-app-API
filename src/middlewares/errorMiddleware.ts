@@ -14,5 +14,7 @@ type ApplicationError = {
 
 export default function errorHandlerMiddleware(err:ApplicationError, req: Request, res: Response, next: NextFunction){
     const statusCode = ERRORS[err.type] ?? 500;
-    return res.sendStatus(statusCode);
+    return res.status(statusCode).json({
+        error: err.message ?? "Unexpected error"
+    });
 }

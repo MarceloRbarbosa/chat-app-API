@@ -1,14 +1,16 @@
-import express, {json, Request, Response}  from "express"
+import express, {json}  from "express"
 import cors from "cors"
-import  httpStatus  from "http-status";
+import errorHandlerMiddleware from "./middlewares/errorMiddleware"
 
+import dotenv from "dotenv"
+import routers from "./routes/indexRouters"
+dotenv.config()
 
 const app = express();
 
 app.use(cors());
 app.use(json());
-
-app.get("/health", (req: Request, res: Response) => res.status(httpStatus.OK).send(`I'm Okay!`));
-
+app.use(routers);
+app.use(errorHandlerMiddleware);
 
 export default app;
