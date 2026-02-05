@@ -4,7 +4,7 @@ import { validateSchema } from "../middlewares/validateSchemaMiddleware";
 import { signUpSchema } from "../schemas/userSchema";
 
 const userRouter = Router()
-userRouter.post("/signup", validateSchema(signUpSchema), userController.SignUp)
+userRouter.post("/auth/signup", validateSchema(signUpSchema), userController.SignUp)
 
 
 export default userRouter

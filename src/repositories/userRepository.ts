@@ -1,18 +1,8 @@
 import  prisma  from "../config/database";
 
-type CreateUserData = {
-    username: string,
-    password: string,
-}
-
-async function createUser(data: CreateUserData) {
+async function createUser(username: string, password: string) {
     const newUser = prisma.user.create({
-        data,
-        select: {
-            id: true,
-            username: true,
-            password:true,
-        },
+        data:{ username, password },
     });
     return newUser;
 }
@@ -30,17 +20,15 @@ async function findUserByUsername(username:string) {
 }
 
 async function findUserById(id:number){
-    const user = prisma.user.findUnique({where: id})
+    const user = prisma.user.findUnique({where: {id}})
 
     return user;
 }
 
-async function deleteUser(id:number) {
-    await prisma.user.delete({where: id})
-}
+
 
 const usersRepository = {
-    createUser, findAllUsers, findUserById, findUserByUsername, deleteUser
+    createUser, findAllUsers, findUserById, findUserByUsername
 }
 
 export default usersRepository;

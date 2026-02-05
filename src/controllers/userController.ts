@@ -4,11 +4,11 @@ import  httpStatus  from "http-status";
 
 
 async function SignUp(req: Request, res: Response ) {
-    const {username, password} = req.body;
-    await userService.signUp(username, password);
+    const { username, password} = req.body;
+    await userService.postNewUser( username, password );
 
-    res.status(httpStatus.CREATED).send({
-        message: "User created successfully"
+     res.status(httpStatus.CREATED).send({
+        message: "User created successfully",
     })
 }
 

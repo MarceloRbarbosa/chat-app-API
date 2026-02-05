@@ -1,24 +1,21 @@
 import usersRepository from "../repositories/userRepository";
 import bcrypt from "bcrypt"
 
-async function signUp(username:string, password: string){
+async function postNewUser(username:string, password: string){
     const conflict = await usersRepository.findUserByUsername(username)
     if(conflict) {
       throw { type: "conflict", message: "this username already exists please choose a new one"}  
     } 
         const passwordHash = await bcrypt.hash(password, 10);
 
-        const newUser = await usersRepository.createUser({
-            username,
-            password: passwordHash,
-        });
+        const newUser = await usersRepository.createUser( username, passwordHash);
 
         return newUser;
     }
 
 
 const userService = {
-    signUp
+    postNewUser
 }
 
 export default userService;
