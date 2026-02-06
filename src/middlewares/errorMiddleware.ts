@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 const ERRORS = {
     unauthorized: 401,
     conflict: 409,
-    not_found: 404,
+    NOT_FOUND: 404,
     bad_request: 400
 } as const
 

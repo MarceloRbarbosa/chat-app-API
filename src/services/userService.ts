@@ -25,7 +25,7 @@ async function findUsers(username:string, password: string){
     const token = jwt.sign(
         { userId: user.id },
         process.env.JWT_SECRET as string,
-        {expiresIn: "30"})
+        {expiresIn: "500m"})
 
     return token
 }
