@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-test
+    ports:
+      - 5433:5432
+    env_file:
+      - .env.test
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -q -d postgres -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    image: chatouol
+    container_name: backend-test
+    build: .
+    ports:
+      - 5000:5000
+    env_file:
+      - .env.test
+    depends_on:
+      postgres:
+          condition: service_healthy

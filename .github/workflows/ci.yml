@@ -11,15 +11,15 @@ jobs:
 
     services:
       postgres:
-        image: postgres:16
+        image: postgres:15
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: uol_test
+          POSTGRES_DB: postgres-test
         ports:
           - 5432:5432
         options: >-
-          --health-cmd="pg_isready -U postgres -d uol_test"
+          --health-cmd="pg_isready -U postgres -d postgres-test"
           --health-interval=5s
           --health-timeout=5s
           --health-retries=10
