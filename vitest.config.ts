@@ -2,6 +2,11 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
+    fileParallelism: false,
+    maxThreads: 1,
+    minThreads: 1,
+    sequence: { concurrent: false },
+    testTimeout: 10000,
     environment: "node",
     globals: true,
     setupFiles: ["./tests/setup.ts"],
