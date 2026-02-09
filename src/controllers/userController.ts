@@ -1,27 +1,17 @@
-import { Request, Response } from "express";
+import { asyncHandler } from "../utils/asyncHandler";
+import httpStatus from "http-status";
 import userService from "../services/userService";
-import  httpStatus  from "http-status";
 
+const signUp = asyncHandler(async (req, res) => {
+  const { username, password } = req.body;
+  await userService.postNewUser(username, password);
+  res.sendStatus(httpStatus.CREATED);
+});
 
-async function signUp(req: Request, res: Response ) {
-    const { username, password} = req.body;
-    await userService.postNewUser( username, password );
+const signIn = asyncHandler(async (req, res) => {
+  const { username, password } = req.body;
+  const token = await userService.findUsers(username, password);
+  res.status(httpStatus.OK).json({ token });
+});
 
-     res.status(httpStatus.CREATED).send({
-        message: "User created successfully",
-    })
-}
-
-async function signIn(req: Request, res: Response) {
-    const loginUsername = req.body.username
-    const loginPassword = req.body.password;
-
-    const result = await userService.findUsers(loginUsername, loginPassword);
-    res.status(httpStatus.OK).json(result);
-}
-
-const userController = {
-    signUp, signIn
-}
-
-export default userController;
+export default { signUp, signIn };

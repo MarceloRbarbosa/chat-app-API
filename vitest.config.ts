@@ -4,5 +4,13 @@ export default defineConfig({
   test: {
     environment: "node",
     globals: true,
+    setupFiles: ["./tests/setup.ts"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"],
+      all: true,
+      include: ["src/**/*.ts"],
+      exclude: ["src/server.ts"],
+    },
   },
 });
