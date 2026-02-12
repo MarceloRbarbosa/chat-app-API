@@ -1,7 +1,8 @@
 import { Router } from "express"
-import healthCheck from "../controllers/healthController"
+import healthController from "../controllers/healthController"
 
 const healthRouter = Router()
-healthRouter.get("/health", healthCheck)
+healthRouter.get("/health", healthController.healthCheck)
+healthRouter.get("/", healthController.realTimeChat)
 
 export default healthRouter
