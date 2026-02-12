@@ -3,13 +3,9 @@ Backend do sistema de bate papo inspirado no chat-uol.
 ## Deploy 
 
 **API em produção (Render)**
-```
-https://bate-papo-uol-backend.onrender.com
+[Link da API](https://bate-papo-uol-backend.onrender.com)
 
-Rota de saúde
-
-https://bate-papo-uol-backend.onrender.com/health
-``` 
+[Rota de saúde](https://bate-papo-uol-backend.onrender.com/health)
 
 ## STACK
 <ul>
