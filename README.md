@@ -4,11 +4,11 @@ Backend do sistema de bate papo inspirado no chat-uol.
 
 **API em produção (Render)**
 ```
-[https://bingo-backend-deploy.onrender.com](https://bate-papo-uol-backend.onrender.com)
+https://bate-papo-uol-backend.onrender.com
 
 Rota de saúde
 
-[https://bingo-backend-deploy.onrender.com/health](https://bate-papo-uol-backend.onrender.com/health)
+https://bate-papo-uol-backend.onrender.com/health
 ``` 
 
 ## STACK
